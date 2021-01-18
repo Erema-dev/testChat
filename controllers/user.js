@@ -89,8 +89,8 @@ module.exports.login = async function (req, res) {
         await user.save()
         let rainbow = new Rainbow()
         rainbow.setNumberRange(1, 10);
-        rainbow.setSpectrum('DarkRed', 'DarkGreen', 'Indigo', 'Maroon', 'Navy', 'Black', 'MidnightBlue', 'Blue');
-        let color = '#' + rainbow.colourAt(Math.floor(Math.random() * 8));
+        rainbow.setSpectrum('DarkRed', 'DarkGreen', 'Indigo', 'Maroon', 'Navy', 'Black', 'MidnightBlue', 'Blue', 'FireBrick', 'Teal');
+        let color = '#' + rainbow.colourAt(Math.floor(Math.random() * 10));
         //Пароли совпали, генерируем токен
         const token = jwt.sign({
             login: user.login,
