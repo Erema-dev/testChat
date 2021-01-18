@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { WebSocketService } from '../web-socket.service';
+import { WebSocketService } from '../shared/services/web-socket.service';
 import { dataMessage } from '../shared/interfaces/interfaces'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ElementRef } from '@angular/core';
