@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+body {
+    background-color: azure;
+    height: 90vh;
+}
+
+.navi{
+    display: table-cell;
+    width: 50%;
+    padding:10%;
+    font-weight: 150%;
+}
+
+.input-form {
+    float:center
+}
+
+.card {
+    margin-top: 0 ; 
+    margin-left: 35%;
+    border: rgb(86, 177, 230) 2px dotted;
+    width: 30%;
+    display: block;
+    background-color: rgb(225, 246, 255);
+}
+
+.nav {
+    margin-top: 5% ; 
+    margin-left: 35%;
+    border: rgb(86, 177, 230) 2px dotted;
+    width: 30%;
+    height: 10%;
+    display: table;
+    background-color: rgb(225, 246, 255);
+}
+
+.input-field{
+    margin:  1rem 10%; 
+    width: 60%;
+    display: block;
+}
+
+
+input {
+    width: 100%;
+}
+
+h2{
+    padding: 10px;
+    color:rgb(54, 92, 161)
+}
+
+
+

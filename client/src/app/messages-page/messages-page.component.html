@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="chat">
+        <div class="chatAndMessage" #divChat [scrollTop]="divChat.scrollHeight">
+            <div class="messageInChat" *ngFor="let message of messages">
+                <div class="messageManager" [ngClass]="{'messageClient': this.user.login == this.message.userName}"
+                    [style.color]="this.message.chatColor">{{message.userName}}: {{message.text}}</div>
+            </div>
+        </div>
+
+        <div class="enterMessage">
+            <form [formGroup]="form" (ngSubmit)='onSubmit()'>
+                <div class="input-message">
+                    <mat-form-field class='form-field'>
+                        <mat-label>Message</mat-label>
+                        <input matInput type="text" placeholder="message" formControlName='text' autocomplete="off">
+                    </mat-form-field>
+
+                </div>
+                <div class="input-field">
+
+                    <button [disabled]='form.invalid' mat-stroked-button color="primary" type='submit'>Send</button>
+
+                    <button mat-stroked-button color="primary" (click)="resetMessages()">Reset</button>
+
+                    <button mat-stroked-button color="primary" (click)="logout()">Logout</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="online" *ngIf="this.user">
+        <div>
+            <h3>Online:</h3>
+            <ul *ngFor="let users of onlineUsers">
+
+                <li [style.color]="this.users.chatColor">{{users.login}} <br>
+
+                    <button mat-stroked-button color="warn"
+                        *ngIf="this.user.isAdmin && !this.users.isAdmin && !this.users.isMute"
+                        (click)="muteUser(this.users._id)">M</button>
+
+                    <button mat-stroked-button color="primary"
+                        *ngIf="this.user.isAdmin && !this.users.isAdmin && this.users.isMute"
+                        (click)="unMuteUser(this.users._id)">UM</button>
+
+                    <button mat-stroked-button color="warn" 
+                    *ngIf="this.user.isAdmin && !this.users.isAdmin"
+                        (click)="banUser(this.users._id)">B</button>
+
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="this.user.isAdmin">
+            <h3>Offline:</h3>
+            <ul *ngFor="let users of offlineUsers">
+
+                <li [style.color]="this.users.chatColor">{{users.login}} <br>
+
+                    <button mat-stroked-button color="warn"
+                        *ngIf="!this.users.isAdmin && !this.users.isMute"
+                        (click)="muteUser(this.users._id)">M</button>
+
+                    <button mat-stroked-button color="primary"
+                        *ngIf="!this.users.isAdmin && this.users.isMute"
+                        (click)="unMuteUser(this.users._id)">UM</button>
+
+                    <button mat-stroked-button color="warn"
+                        *ngIf="!this.users.isAdmin && !this.users.isBanned"
+                        (click)="banUser(this.users._id)">B</button>
+
+                    <button mat-stroked-button color="primary"
+                        *ngIf="!this.users.isAdmin && this.users.isBanned"
+                        (click)="unBanUser(this.users._id)">UB</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card">
+    <h2>Регистрация</h2>
+<form [formGroup]="form" (ngSubmit)='onSubmit()'>
+    <div class="input-field">
+        <mat-form-field>
+            <mat-label>Login</mat-label>
+            <input  matInput type="text" 
+                    placeholder="Ex. mail@example.com"
+                    formControlName='login'
+                    autocomplete="off">   
+            <mat-error *ngIf="form.get('login').hasError('required')">login is required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="input-field">
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+                <input matInput type="password" 
+                placeholder="********"
+                formControlName='password'>
+            <mat-error *ngIf="form.get('password').hasError('required')">password is required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="input-field">
+        <button [disabled]='form.invalid' 
+        mat-stroked-button color="primary"
+        type='submit'>Регистрация</button>
+    </div>
+</form>
+</div>
