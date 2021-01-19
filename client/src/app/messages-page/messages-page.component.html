@@ -3,7 +3,7 @@
         <div class="chatAndMessage" #divChat [scrollTop]="divChat.scrollHeight">
             <div class="messageInChat" *ngFor="let message of messages">
                 <div class="messageManager" [ngClass]="{'messageClient': this.user.login == this.message.userName}"
-                    [style.color]="this.message.chatColor">{{message.userName}}: {{message.text}}</div>
+                    [style.color]="this.message.chatColor">{{message.create_at | date: 'HH:mm'}}: {{message.userName}}: {{message.text}}</div>
             </div>
         </div>
 

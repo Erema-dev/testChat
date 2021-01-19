@@ -48,7 +48,7 @@ const onConnect = async (socket) => {
 
    const getUsers = async() => {
         if (socket.user.isAdmin) {
-            socket.server.sockets.emit('offline users', await getOfflineUsers())
+            socket.emit('offline users', await getOfflineUsers())
         }
         socket.server.sockets.emit('online users', await getOnlineUsers())
    }
@@ -60,7 +60,7 @@ const onConnect = async (socket) => {
 
     socket.emit('user join', await addConnection(socket.user))
     socket.emit('get messages', await getMessage())
-    socket.server.sockets.emit('new user', `${socket.user.login} join the chat`)
+    socket.broadcast.emit('new user', `${socket.user.login} join the chat`)
     await getUsers()
 
     //Новое сообщение

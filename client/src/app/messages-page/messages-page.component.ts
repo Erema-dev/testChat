@@ -139,7 +139,8 @@ export class MessagesPageComponent implements OnInit, OnDestroy {
   chatBot(textChat) {
     this.messages.push({
       userName: 'ChatBot',
-      text: textChat
+      text: textChat,
+      create_at: new Date()
     });
   }
 
