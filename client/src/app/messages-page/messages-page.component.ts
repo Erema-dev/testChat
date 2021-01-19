@@ -148,10 +148,14 @@ export class MessagesPageComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    localStorage.clear()
-    this.token = null
-    this.router.navigate(['/login'])
-    this.WebSocketService.emit('logout', this.user._id)
     event.preventDefault()
+
+    if(confirm("Вы уверены, что хотите выйти?")) {
+      localStorage.clear()
+      this.token = null
+      this.router.navigate(['/login'])
+      this.WebSocketService.emit('logout', this.user._id)
+    };
+
   }
 }
