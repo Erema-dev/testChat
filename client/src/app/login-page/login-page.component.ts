@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -18,7 +18,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   aSub: Subscription
 
   @Output() onSub = new EventEmitter()
-
+  @ViewChild('titlePassword', {static: false}) inputRef: ElementRef
+  
   constructor(private auth: AuthService,
     private router: Router,
     private route: ActivatedRoute) { }
@@ -66,6 +67,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
       (error) => {
         alert(error.error.message)
         this.form.enable()
+        this.inputRef.nativeElement.focus()
+        this.form.get('password').reset()
       })
 
   }

@@ -1,11 +1,8 @@
 const express = require('express')
 const app = express()
-const bodyParser = require('body-parser')
 const server = require('http').createServer(app)
 const mongoose = require('mongoose')
 const keys = require('./config/keys')
-const Message = require('./models/Message')
-const cookieSession = require('cookie-session')
 const port = process.env.port || 5000
 const cors = require('cors');
 const userRoutes = require('./routes/user')
@@ -21,7 +18,7 @@ app.use(express.json());
 app.use(require('morgan')('dev'))
 const webSocketController = require('./controllers/webSocketController');
 
-mongoose.connect(keys.mongoUri)
+mongoose.connect(keys.mongoUri, { useNewUrlParser: true })
   .then(() => { console.log('mongoDB has been connected') })
   .catch((error) => console.log(error))
 
