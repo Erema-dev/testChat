@@ -41,7 +41,6 @@ li{
 	background: #ffffff;
 	margin-right: 40%;
 	overflow: hidden;
-	/* display: table-cell; */
 	grid-column: 1;
 }
 
@@ -51,8 +50,9 @@ li{
 	display: grid;
 	grid-template-columns: 70% 30% ;
 	grid-gap: 0;
-	border: 3px inset #dbdbdd;
+	border: 3px solid #dbdbdd;
 	margin: 0 20%;
+	border-radius: 10px;
 } 
 
 
@@ -74,7 +74,6 @@ li{
 }
 
 .input-field{
-	/* display: grid; */
 	overflow: auto;
 }
 
@@ -84,26 +83,48 @@ li{
 	body{
 		padding: 0;
 		margin: 0;
-		height: 100vh;
+		height: 99vh;
+		width:50%;
 	}
 	.container{
-		width: 100%;
+		width: 98%;
 		height: 100vh;
 		margin: 0 0 0 0;
-		border-radius: none
+		border-radius: 0;
+		position: absolute;
+		top:0;
+		left:0;
+		border:none;
 	}
 	.input-field{
 		/* display: grid; */
 		overflow: auto;
 	}
 
+	.online {
+		border-left: 3px inset #dbdbdd; 
+		border-top: none;
+		border-bottom:none;
+		border-right: none;
+	}
 
-.messageInChat {
-    overflow: auto;
-    margin-bottom: 0;
-    border-radius: 5px;
-    padding: 5px;
-}
+	.chat{
+		border-bottom: none;
+		border-top: none;
+		border-left: none;
+	}
+
+	.enterMessage{
+		border-bottom: none;
+		border-top: none;
+	}
+
+	.messageInChat {
+		overflow: auto;
+		margin-bottom: 0;
+		border-radius: 5px;
+		padding: 5px;
+	}
 
 }
 
@@ -136,3 +157,4 @@ li{
 	padding: 5px;
 	word-wrap: break-word;
 }
+
